@@ -1,0 +1,18 @@
+[
+  { "firstName": "foo",
+    "lastName": "bar",
+    "email": "foo@bar.com",
+    "goalId": 2 
+  }, 
+  { "firstName": "jen",
+    "lastName": "tran",
+    "email": "jentran39@gmail.com",
+    "goalId": 2
+  },
+  {
+    "firstName": "iamfirst",
+    "lastName": "iamlast",
+    "email": "iam@batman.com",
+    "goalId": 1
+  }
+]
