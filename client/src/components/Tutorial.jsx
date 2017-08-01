@@ -2,14 +2,17 @@ import React from 'react'
 import $ from 'jquery'
 
 let instructions = [
-  '',
-  'Pick a convenient reference number', //pop 100 out somewhere
-  'Find the difference', //change the colors
-  'Find the difference again', //change the colors
-  'Find the diagonal difference', //create a circle
-  'Multiply that by the reference number',
-  'Multiply these numbers together',
-  'Add them together', //put a plus together
+  '','',
+  'Step 1) Pick a convenient reference number', //pop 100 out somewhere
+  'Step 2) Find the difference between reference & first number', //change the colors
+  'Step 3) Find the difference between reference & second number', //change the colors
+  'Step 4) Find the difference between any of the diagonals', //create a circle
+  'Step 4) Find the difference between any of the diagonals',
+  'Step 5) Multiply that difference by the reference number',
+  'Step 5) Multiply that difference by the reference number',
+  'Step 6) Multiply the differences together',
+  'Step 6) Multiply the differences together',
+  'Step 7) Add the two together', //put a plus together
   'DONE!!' //fill in the value answer
 ]
 
@@ -21,7 +24,7 @@ class Tutorial extends React.Component {
     super(props)
     this.state = {
       step: 1,
-      instruction: instructions[1],
+      instruction: instructions[0],
       referenceNumber: '',
       diff1: '',
       diff2: ''
@@ -48,6 +51,7 @@ class Tutorial extends React.Component {
     if (step === 1) {
       this.setState({ referenceNumber: 100 })
       $('.referenceMessage').css("visibility", "visible")
+      $('.message').css("visibility", "visible")
     } else if (step === 2) {
       //reference number minus first number
       $('.referenceNumber').css("color","blue")
@@ -56,7 +60,7 @@ class Tutorial extends React.Component {
       let diff1 = this.state.referenceNumber - this.props.problemValues[0]
       
       $('.problemEntry').append(`<div class="diff"><span class="diff1">${diff1}</span></div>`)
-      $('.diff1').css("color","blue")
+      $('.diff1').css("color","green")
 
       this.setState({ diff1: diff1 })
     } else if (step === 3) {
@@ -66,7 +70,7 @@ class Tutorial extends React.Component {
       $('.problemValue1').css("color","black")
       $('.problemValue2').css("color","blue")
       $('.diff1').css("color","black")
-      $('.diff2').css("color","blue")
+      $('.diff2').css("color","green")
     } else if ( step === 4 ) {
       $('.referenceNumber').css("color","black")
       $('.problemValue1').css("color", "orange")
@@ -102,6 +106,8 @@ class Tutorial extends React.Component {
       $('.diff2').css("color","black")
       $('.problemEntry').append(`<div class="finalCalculation">${this.state.referenceNumber*(this.props.problemValues[0]-this.state.diff2)} + ${this.state.diff1* this.state.diff2} = <span class="finalAnswer">${this.state.diff1* this.state.diff2 + this.state.referenceNumber*(this.props.problemValues[0]-this.state.diff2)}</span></div>`)
       $('.finalAnswer').css("color","blue")
+    } else if ( step === 11 ) {
+      this.props.changeInput(this.state.diff1* this.state.diff2 + this.state.referenceNumber*(this.props.problemValues[0]-this.state.diff2))
     }
     this.setState( { step: this.state.step+1 } )
   }
@@ -123,7 +129,7 @@ class Tutorial extends React.Component {
     $('.tutorial').remove()
     $('.problemValue1').css("color","black")
     $('.problemValue2').css("color","black")
-
+    $('.message').css("visibility", "hidden")
   }
 
   //i need to pass down the value of newquestion
@@ -134,6 +140,7 @@ class Tutorial extends React.Component {
     return (
       <div>
         <div className="tutorialButton"><button onClick={this.handleClick.bind(this)}>Play Tutorial</button><button onClick={this.handleResetClick.bind(this)}>Reset Tutorial</button></div>
+        <div className="message">{instructions[this.state.step]}</div>
         <div className="referenceMessage">Reference Number<div className="referenceNumber">{this.state.referenceNumber}</div></div>
       </div>
     )

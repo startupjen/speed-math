@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import $ from 'jquery'
 
 import Problem from './components/Problem.jsx'
+import Milestone from './components/Milestone.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div><Milestone /></div>
         <div className="problem-container">
           <Problem />
         </div>

@@ -1,6 +1,7 @@
 let express = require('express')
 let app = require('../server')
 let router = require('express').Router()
+let db = require('../db')
 
 router.get('/', (req, res) => {
   res.send('sup dawg')
@@ -8,9 +9,19 @@ router.get('/', (req, res) => {
 
 router.post('/')
 
-router.post('/user/milestones')
+router.post('/user/milestones', (req, res) => {
+  console.log('bloop')
+  db.Goal.findAll().then( (goals) => {
+    res.send(goals)
+  })
+})
 
-router.get('/user/milestones')
+router.get('/user/milestones', (req,res) => {
+  console.log('bloop')
+  db.Goal.findAll().then( (goals) => {
+  res.send(goals)
+  })
+})
 
 router.get('/login')
 

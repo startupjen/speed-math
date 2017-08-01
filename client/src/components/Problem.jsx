@@ -22,6 +22,7 @@ class Problem extends React.Component {
   getAnswerMessage(isCorrect) {
     if (isCorrect) { 
       this.setState({message: message.correct[this.generateRandomNumber(0,message.correct.length-1)]})
+
     } else {
       this.setState({message: message.incorrect[this.generateRandomNumber(0,message.incorrect.length-1)]})
     }
@@ -56,17 +57,22 @@ class Problem extends React.Component {
     this.setState({ userAnswer: event.target.value })
   }
 
+  changeInputValue(value) {
+    this.setState({userAnswer: value})
+  }
 
   render() {
     return (
       <div>
-        <Tutorial problemValues={this.state.problemValues}/>
+        <Tutorial problemValues={this.state.problemValues} changeInput={this.changeInputValue.bind(this)} />
         <div className="problemEntry">
           <div className="answerResultMessage">{this.state.message}</div>
-          <span className="problemValue1">{this.state.problemValues[0]}</span> X 
-          <span className="problemValue2"> {this.state.problemValues[1]}</span> = 
-          <span className="userAnswer"> <input type="text" value={this.state.userAnswer} onChange={this.handleChange.bind(this)}/> </span> 
-          <span className="submitAnswer"><button onClick={this.handleClick.bind(this)}>Check Answer</button></span>
+          <div className="problemLine">
+            <span className="problemValue1">{this.state.problemValues[0]}</span> X 
+            <span className="problemValue2"> {this.state.problemValues[1]}</span> = 
+            <span className="userAnswer"> <input type="text" value={this.state.userAnswer} onChange={this.handleChange.bind(this)}/> </span> 
+            <span className="submitAnswer"><button onClick={this.handleClick.bind(this)}>Check Answer</button></span>
+          </div>
         </div>
       </div>
     )

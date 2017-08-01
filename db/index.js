@@ -36,3 +36,8 @@ sequelize.sync({force: true}).then( () => {
     User.bulkCreate(seedUser)
   })
 })
+
+module.exports = {
+  Goal: Goal,
+  User: User
+}
