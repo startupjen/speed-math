@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
 
+import Problem from './components/Problem.jsx'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -13,8 +15,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>some text here
-        <div className="blah">
+      <div>
+        <div className="problem-container">
+          <Problem />
         </div>
       </div>
     )
