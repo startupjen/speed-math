@@ -37,6 +37,12 @@ class Tutorial extends React.Component {
 
   //do we change the className on each one?
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.problemValues !== nextProps.problemValues) {
+      this.handleResetClick()
+    }
+  }
+
   executeNextStep() {
     let step = this.state.step
     if (step === 1) {
@@ -91,7 +97,7 @@ class Tutorial extends React.Component {
     } else if ( step === 9 ) {
       $('.diffMult').append(`<span>= ${this.state.diff1* this.state.diff2}</span>`)
     } else if ( step === 10 ) {
-      $('.diffMult tutorial').css("color","black")
+      $('.diffMult').css("color","black")
       $('.diff1').css("color","black")
       $('.diff2').css("color","black")
       $('.problemEntry').append(`<div class="finalCalculation">${this.state.referenceNumber*(this.props.problemValues[0]-this.state.diff2)} + ${this.state.diff1* this.state.diff2} = <span class="finalAnswer">${this.state.diff1* this.state.diff2 + this.state.referenceNumber*(this.props.problemValues[0]-this.state.diff2)}</span></div>`)
@@ -115,8 +121,14 @@ class Tutorial extends React.Component {
     this.setState({ step: 1 })
     $('.referenceMessage').css("visibility", "hidden")
     $('.tutorial').remove()
+    $('.problemValue1').css("color","black")
+    $('.problemValue2').css("color","black")
+
   }
 
+  //i need to pass down the value of newquestion
+  //if new question has changed 
+  //then need to launch handleResetClick
 
   render() {
     return (
