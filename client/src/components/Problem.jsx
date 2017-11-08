@@ -25,6 +25,7 @@ class Problem extends React.Component {
 
     } else {
       this.setState({message: message.incorrect[this.generateRandomNumber(0,message.incorrect.length-1)]})
+      
     }
   }
 
@@ -47,9 +48,11 @@ class Problem extends React.Component {
     if ( isAnswerCorrect ) {
       console.log('answer is correct!')
       this.generateMultiplicationProblem(90,99)
+      this.props.incrementCompletedCorrectProblemCount()
     } else {
       console.log('incorrect! try again!')
       this.getAnswerMessage(false)
+      this.props.resetConsecutiveCounter()
     }
   }
 
@@ -64,7 +67,7 @@ class Problem extends React.Component {
   render() {
     return (
       <div>
-        <Tutorial problemValues={this.state.problemValues} changeInput={this.changeInputValue.bind(this)} />
+        <Tutorial markTutorialCompleted={this.props.markTutorialCompleted} problemValues={this.state.problemValues} changeInput={this.changeInputValue.bind(this)} />
         <div className="problemEntry">
           <div className="answerResultMessage">{this.state.message}</div>
           <div className="problemLine">

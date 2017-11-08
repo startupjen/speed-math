@@ -1,7 +1,7 @@
 [
   { "goal": "Complete tutorial" },
-  { "goal": "Correctly do 1 problem" },
-  { "goal": "Consecutively do 3 problems correctly in a row" },
-  { "goal": "Consecutively do 5 problems correctly in a row" },
+  { "goal": "Correctly do 1 problem", "consecutiveGoal": 1 },
+  { "goal": "Consecutively do 3 problems correctly in a row", "consecutiveGoal": 3 },
+  { "goal": "Consecutively do 5 problems correctly in a row", "consecutiveGoal": 5 },
   { "goal": "Difficulty unlocked - Multiply above 100" }
 ]

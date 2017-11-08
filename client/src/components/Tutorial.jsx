@@ -109,6 +109,9 @@ class Tutorial extends React.Component {
     } else if ( step === 11 ) {
       this.props.changeInput(this.state.diff1* this.state.diff2 + this.state.referenceNumber*(this.props.problemValues[0]-this.state.diff2))
     }
+
+    if ( step === instructions.length - 2) { this.props.markTutorialCompleted() }
+
     this.setState( { step: this.state.step+1 } )
   }
 

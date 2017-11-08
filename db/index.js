@@ -19,7 +19,8 @@ sequelize
   })
 
 const Goal = sequelize.define('goal', {
-  goal: { type: Sequelize.STRING}
+  goal: { type: Sequelize.STRING},
+  consecutiveGoal: { type: Sequelize.INTEGER }
 })
 
 const User = sequelize.define('user', {

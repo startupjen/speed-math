@@ -2,7 +2,7 @@
   { "firstName": "foo",
     "lastName": "bar",
     "email": "foo@bar.com",
-    "goalId": 2 
+    "goalId": 1 
   }, 
   { "firstName": "jen",
     "lastName": "tran",
